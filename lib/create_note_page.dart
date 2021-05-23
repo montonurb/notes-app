@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:notes_app/botao.dart';
+import 'package:notes_app/campo_anotacao.dart';
 
 class CreateNotePage extends StatefulWidget {
   @override
@@ -45,33 +47,9 @@ class _CreateNotePageState extends State<CreateNotePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextField(
-                controller: textController,
-                maxLines: null,
-                onChanged: (value) {
-                  description = value;
-                  setState(() {});
-                },
-                decoration: InputDecoration(labelText: "Descrição"),
-              ),
-              SizedBox(
-                height: 32,
-              ),
-              if (description.isNotEmpty)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 200,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context, description);
-                        },
-                        child: Text(isEdit ? "Salvar" : "Criar"),
-                      ),
-                    ),
-                  ],
-                )
+              CampoAnotacao(description, textController),
+              SizedBox(height: 32),
+              if (description.isNotEmpty) BotaoSalvar(isEdit, description),
             ],
           ),
         ));

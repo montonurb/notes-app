@@ -22,16 +22,26 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("NOTES"),
         centerTitle: true,
+        actions: [
+          IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () async {
+                var description =
+                    await Navigator.pushNamed(context, "/create-note");
+                if (description != null) notes.add(description as String);
+                setState(() {});
+              }),
+        ],
       ),
       body: BodyList(notes),
-      floatingActionButton: FloatingActionButton(
+      /*floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () async {
           var description = await Navigator.pushNamed(context, "/create-note");
           if (description != null) notes.add(description as String);
           setState(() {});
         },
-      ),
+      ),*/
     );
   }
 }

@@ -26,6 +26,9 @@ class _CampoAnotacaoState extends State<CampoAnotacao> {
         },
         decoration: InputDecoration(labelText: "Descrição"),
       ),
+      SizedBox(
+        height: 50,
+      ),
       if (widget.description.isNotEmpty)
         BotaoSalvar(widget.isEdit, widget.description),
     ]);

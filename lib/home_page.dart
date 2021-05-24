@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:notes_app/body_list.dart';
-import 'package:notes_app/botao_floating.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,7 +8,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    setState(() {});
+    super.initState();
+  }
+
   var notes = <String>[];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +24,14 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
       ),
       body: BodyList(notes),
-      floatingActionButton: BotaoFloatting(notes),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () async {
+          var description = await Navigator.pushNamed(context, "/create-note");
+          if (description != null) notes.add(description as String);
+          setState(() {});
+        },
+      ),
     );
   }
 }

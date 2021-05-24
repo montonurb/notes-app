@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:notes_app/botao.dart';
 import 'package:notes_app/campo_anotacao.dart';
 
 class CreateNotePage extends StatefulWidget {
@@ -29,29 +28,24 @@ class _CreateNotePageState extends State<CreateNotePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(isEdit ? "EDITAR NOTA" : "CRIAR NOTA"),
-          centerTitle: true,
-          actions: [
-            if (isEdit)
-              IconButton(
-                icon: Icon(Icons.delete),
-                onPressed: () {
-                  Navigator.pop(context, "");
-                },
-              ),
-          ],
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(32.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CampoAnotacao(description, textController),
-              SizedBox(height: 32),
-              if (description.isNotEmpty) BotaoSalvar(isEdit, description),
-            ],
-          ),
-        ));
+      appBar: AppBar(
+        title: Text(isEdit ? "EDITAR NOTA" : "CRIAR NOTA"),
+        centerTitle: true,
+        actions: [
+          if (isEdit)
+            IconButton(
+              icon: Icon(Icons.delete),
+              onPressed: () {
+                Navigator.pop(context, "");
+                setState(() {});
+              },
+            ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(32.0),
+        child: CampoAnotacao(description, textController, isEdit),
+      ),
+    );
   }
 }

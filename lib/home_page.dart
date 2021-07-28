@@ -34,14 +34,6 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: BodyList(notes),
-      /*floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () async {
-          var description = await Navigator.pushNamed(context, "/create-note");
-          if (description != null) notes.add(description as String);
-          setState(() {});
-        },
-      ),*/
     );
   }
 }
